@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report a Message Problem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        select {
+            height: 40px;
+        }
+        .submit-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #2980b9;
+        }
+        .required {
+            color: #e74c3c;
+        }
+        .success-message {
+            display: none;
+            background-color: #dff0d8;
+            color: #3c763d;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Report a Message Problem</h1>
+    
+    <div class="form-container">
+        <form id="problemReportForm">
+            <div class="form-group">
+                <label for="problemType">Problem Type <span class="required">*</span></label>
+                <select id="problemType" required>
+                    <option value="">-- Select a problem type --</option>
+                    <option value="message-not-sending">Messages not sending</option>
+                    <option value="message-not-receiving">Not receiving messages</option>
+                    <option value="delayed-messages">Delayed messages</option>
+                    <option value="notification-issues">Notification issues</option>
+                    <option value="attachment-problems">Problems with attachments</option>
+                    <option value="other">Other issue</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Describe the Problem <span class="required">*</span></label>
+                <textarea id="description" placeholder="Please provide details about the issue you're experiencing..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="steps">Steps to Reproduce (if applicable)</label>
+                <textarea id="steps" placeholder="What steps can we take to see the same problem?"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label>
+                <input type="text" id="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Your Email <span class="required">*</span></label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Your Username (if applicable)</label>
+                <input type="text" id="username">
+            </div>
+            
+            <div class="form-group">
+                <label for="deviceInfo">Device and Browser Information</label>
+                <input type="text" id="deviceInfo" placeholder="e.g., iPhone 14, Chrome browser">
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Report</button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            <h3>Thank you for your report!</h3>
+            <p>We have received your message problem report and will investigate the issue. Our team will contact you if we need additional information.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('problemReportForm');
+            const successMessage = document.getElementById('successMessage');
+            
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                // Collect form data
+                const formData = {
+                    problemType: document.getElementById('problemType').value,
+                    description: document.getElementById('description').value,
+                    steps: document.getElementById('steps').value,
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    username: document.getElementById('username').value,
+                    deviceInfo: document.getElementById('deviceInfo').value
+                };
+                
+                // In a real application, you would send this data to your server
+                console.log('Problem report submitted:', formData);
+                
+                // Show success message
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Here you would typically send the data via fetch or XMLHttpRequest
+                // Example:
+                /*
+                fetch('/api/report-problem', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    form.style.display = 'none';
+                    successMessage.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your report. Please try again.');
+                });
+                */
+            });
+        });
+    </script>
+</body>
+</html>

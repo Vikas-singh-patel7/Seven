@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Your Website</title>
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166088;
+            --accent-color: #4dc4c0;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .category-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+        }
+        
+        .category-content h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+        
+        .category-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #3aa8a5;
+        }
+        
+        .featured-category {
+            grid-column: span 2;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .featured-category .category-img {
+            width: 400px;
+            height: 300px;
+        }
+        
+        .featured-category .category-content {
+            width: calc(100% - 400px);
+        }
+        
+        @media (max-width: 768px) {
+            .featured-category {
+                grid-column: span 1;
+                flex-direction: column;
+            }
+            
+            .featured-category .category-img,
+            .featured-category .category-content {
+                width: 100%;
+            }
+        }
+        
+        .breadcrumb {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+        
+        .breadcrumb li {
+            margin-right: 0.5rem;
+        }
+        
+        .breadcrumb li:after {
+            content: "›";
+            margin-left: 0.5rem;
+        }
+        
+        .breadcrumb li:last-child:after {
+            content: "";
+        }
+        
+        .breadcrumb a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Browse Categories</h1>
+            <p>Discover our products and materials</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li>Categories</li>
+        </ul>
+        
+        <div class="category-grid">
+            <div class="category-card featured-category">
+                <img src="https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Electronics" class="category-img">
+                <div class="category-content">
+                    <h3>Electronics</h3>
+                    <p>Discover our wide range of electronic devices, gadgets, and accessories for all your tech needs.</p>
+                    <p>Browse through the latest technology products and find the perfect device for your requirements.</p>
+                    <a href="#" class="btn">Shop Electronics</a>
+                </div>
+            </div>
+            
+            <div class="category-card featured-category">
+                <img src="https://media.istockphoto.com/id/1263424631/photo/e-learning-online-education-or-internet-encyclopedia-concept-open-laptop-and-book-compilation.jpg?s=612x612&w=0&k=20&c=2xih46TXLwHnvgU5FaY9FRRc3F62MpzL__S8O6v2jRU=" alt="Study Materials" class="category-img">
+                <div class="category-content">
+                    <h3>Study Materials</h3>
+                    <p>Comprehensive learning resources and educational materials to help you excel in your studies.</p>
+                    <p>Find textbooks, reference guides, practice tests, and more learning tools for academic success.</p>
+                    <a href="#" class="btn">Explore Study Materials</a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="https://plus.unsplash.com/premium_photo-1682125773446-259ce64f9dd7?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Textbooks" class="category-img">
+                <div class="category-content">
+                    <h3>Textbooks</h3>
+                    <p>Academic textbooks covering all subjects and educational levels.</p>
+                    <a href="#" class="btn">Find Textbooks</a>
+                </div>
+            </div>
+            
+            <div class="category-card">
+                <img src="https://i.ytimg.com/vi/E3nw_LrtU5g/maxresdefault.jpg" alt="Study Guides" class="category-img">
+                <div class="category-content">
+                    <h3>Study Guides</h3>
+                    <p>Comprehensive guides and practice materials for exam preparation.</p>
+                    <a href="#" class="btn">Get Study Guides</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Your Website Name. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
